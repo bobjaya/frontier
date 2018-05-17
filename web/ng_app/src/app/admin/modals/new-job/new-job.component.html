@@ -1,0 +1,46 @@
+  <div class="modal-dialog" role="document">
+    <div class="modal-content d-flex">
+      <button type="button" class="close" [routerLink]="'/admin/jobs/'+ hiringManagerService.hiringManagerName"></button>
+      <div class="modal-container text-center">
+        <p class="poppins fz-30 weight-500">Create New Job</p>
+        <form action="#!" class="pt-4" [formGroup]="jobForm">
+          <div class="md-form">
+            <label for="form1">Job Title</label>
+            <input type="text" id="form1" class="form-control" [formControl]="jobForm.controls.title">
+          </div>
+          <div class="form-row">
+            <div class="col-sm">
+              <div class="md-form">
+                <label for="form2">City</label>
+                <input type="text" id="form2" class="form-control" [formControl]="jobForm.controls.city">
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="md-form">
+                <label for="form3">State</label>
+                <input type="text" id="form3" class="form-control" [formControl]="jobForm.controls.state">
+              </div>
+            </div>
+          </div>
+          <div class="md-form">
+            <select id="form4" class="form-control" [formControl]="jobForm.controls.type">
+                <option value="Intern">Intern</option>
+                <option value="Part time">Part time</option>
+                <option value="Fulltime">Fulltime</option>
+                <option value="Contravtor">Contravtor</option>
+            </select>
+            <label for="form4" *ngIf="!jobForm.controls.type.value">Job Title</label>
+          </div>
+          <div class="md-form">
+            <select id="form5" class="form-control" [formControl]="jobForm.controls.level">
+                <option value="Entry Level">Entry Level</option>
+                <option value="Mild level">Mild level</option>
+                <option value="Senior level">Senior level</option>
+            </select>
+            <label for="form5" *ngIf="!jobForm.controls.level.value">Job Level</label>
+          </div>
+          <button class="btn btn-dark btn-rounded mt-5" [disabled]="!jobForm.valid" (click)="addNewJob()">create job</button>
+        </form>
+      </div>
+    </div>
+  </div>

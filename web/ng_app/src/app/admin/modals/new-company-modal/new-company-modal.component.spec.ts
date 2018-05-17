@@ -1,0 +1,58 @@
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { NewCompanyModalComponent } from './new-company-modal.component';
+import { AngularDependenciesModule } from '../../../shared/angular-dependencies.module';
+import { AdminService } from '../../../shared/admin.service';
+import { RouterModule } from '@angular/router';
+import { appRoutes } from '../../admin.routing';
+import { JobsComponent } from '../../jobs/jobs.component';
+import { CompanyComponent } from '../../company/company.component';
+import { AdminComponent } from '../../admin.component';
+import { HeaderComponent } from '../../layout/header/header.component';
+import { HiringManagersComponent } from '../../hiring-managers/hiring-managers.component';
+import { StatsComponent } from '../../stats/stats.component';
+import { NewJobComponent } from '../new-job/new-job.component';
+import { NewEmployeeComponent } from '../new-employee/new-employee.component';
+import { NewHiringManagerModalComponent } from '../new-hiring-manager-modal/new-hiring-manager-modal.component';
+import { TrackResponsesComponent } from '../../track-responses/track-responses.component';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { APP_BASE_HREF } from '@angular/common';
+
+describe('NewCompanyModalComponent', () => {
+  let component: NewCompanyModalComponent;
+  let fixture: ComponentFixture<NewCompanyModalComponent>;
+
+  beforeEach(async(() => {
+    TestBed.configureTestingModule({
+      imports: [AngularDependenciesModule,
+        RouterModule.forRoot(appRoutes),
+        NgSelectModule],
+      declarations: [ NewCompanyModalComponent,
+        JobsComponent,
+        CompanyComponent,
+        AdminComponent,
+        HeaderComponent,
+        NewCompanyModalComponent,
+        HiringManagersComponent,
+        NewHiringManagerModalComponent,
+        NewEmployeeComponent,
+        JobsComponent,
+        NewJobComponent,
+        StatsComponent,
+        TrackResponsesComponent ],
+      providers: [AdminService,
+        { provide: APP_BASE_HREF, useValue: '/' }]
+    })
+    .compileComponents();
+  }));
+
+  beforeEach(() => {
+    fixture = TestBed.createComponent(NewCompanyModalComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

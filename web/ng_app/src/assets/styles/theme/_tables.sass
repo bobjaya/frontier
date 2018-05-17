@@ -1,0 +1,59 @@
+table.table 
+	thead 
+		th
+			font-family: "Poppins"
+			font-size: 10px
+			font-weight: 500
+			letter-spacing: 1.7px	
+			text-transform: uppercase
+			border-bottom: 0
+		&:not([class])
+			th
+				color: #2e2e2e
+	td, th
+		border-bottom: 1px solid #e2e2e2
+		border-top: 0
+		font-size: inherit
+		padding: 15px 30px
+	&:not(.table-admin)
+		td, th
+			padding-left: 0 !important
+	.table-descr
+		font-weight: normal
+		text-align: left
+		min-width: 180px
+	&.table-radio
+		thead 
+			th
+				&.th-radio
+					width: 126px
+		td, th
+			vertical-align: middle
+		.radio-wrap
+			padding-bottom: 0
+			height: auto
+	&.table-dropdown
+		thead 
+			white-space: nowrap
+			th
+				min-width: 165px
+	&.table-admin
+		td, th
+			vertical-align: middle
+			padding: 15px 10px
+		th
+			padding: 23px 10px
+		.logo-company
+			height: 35px
+			width: auto
+
+@media (max-width: 991px)
+	table.table 
+		td, th
+			padding: 15px
+		&.table-radio
+			thead 
+				th
+					&.th-radio
+						width: 100px
+						min-width: 100px

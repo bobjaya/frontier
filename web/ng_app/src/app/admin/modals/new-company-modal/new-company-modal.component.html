@@ -1,0 +1,94 @@
+  <div class="modal-dialog" role="document">
+    <div class="modal-content d-flex">
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close" routerLink="/admin/company"></button>
+      <div class="modal-container text-center">
+        <p class="poppins fz-30 weight-500">Create new company</p>
+        <form action="#!" class="pt-4" [formGroup]="companyForm">
+          <div class="md-form">
+            <label for="form1">Company Name</label>
+            <input type="text" id="form1" class="form-control" [formControl]="companyForm.controls.name">
+            <label class="error">
+                <div *ngIf="!companyForm.controls.name.valid && companyForm.controls.name.value">
+                    Please enter at least 2 characters.
+                </div>
+              </label>
+          </div>
+          <div class="md-form-group">
+            <div class="md-form">
+              <label for="form2">Company  Address Line 1</label>
+              <input type="text" id="form2" class="form-control" [formControl]="companyForm.controls.address1">
+              <label class="error">
+                  <div *ngIf="!companyForm.controls.address1.valid && companyForm.controls.address1.value">
+                      Please enter at least 5 characters.
+                  </div>
+                </label>
+            </div>
+            <div class="md-form">
+              <label for="form3">Company  Address Line 2</label>
+              <input type="text" id="form3" class="form-control" [formControl]="companyForm.controls.address2">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-sm">
+              <div class="md-form">
+                <label for="form4">State Name</label>
+                <input type="text" id="form4" class="form-control" [formControl]="companyForm.controls.state">
+                <label class="error">
+                    <div *ngIf="!companyForm.controls.state.valid && companyForm.controls.state.value">
+                        Please enter at least 2 characters.
+                    </div>
+                  </label>
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="md-form">
+                <label for="form5">City Name</label>
+                <input type="text" id="form5" class="form-control" [formControl]="companyForm.controls.city">
+                <label class="error">
+                    <div *ngIf="!companyForm.controls.city.valid && companyForm.controls.city.value">
+                        Please enter at least 2 characters.
+                    </div>
+                  </label>
+              </div>
+            </div>
+            <div class="col-sm">
+              <div class="md-form">
+                <label for="form6">Zip Code</label>
+                <input type="text" id="form6" class="form-control" [formControl]="companyForm.controls.zip_code">
+              </div>
+            </div>
+          </div>
+          <div class="md-form">
+            <label for="form7">Client Contact Person</label>
+            <input type="text" id="form7" class="form-control" [formControl]="companyForm.controls.client_contact">
+          </div>
+          <div class="md-form">
+            <label for="form8">Client Contact Email Address</label>
+            <input type="text" id="form8" class="form-control" [formControl]="companyForm.controls.email">
+            <label class="error">
+              <div *ngIf="!companyForm.controls.email.valid && companyForm.controls.email.value">
+                Please enter a valid email address.
+              </div>
+            </label>
+          </div>
+          <div class="md-form">
+            <label for="form9">Phone Number</label>
+            <input type="text" id="form9" class="form-control" [formControl]="companyForm.controls.phone">
+            <label class="error">
+                <div *ngIf="!companyForm.controls.phone.valid && companyForm.controls.phone.value">
+                    Please enter at least 4 characters.
+                </div>
+              </label>
+          </div>
+          <div class="md-form">
+            <label for="form10">Upload Logo</label>
+            <input type="text" id="form10" class="form-control">
+            <div class="file-wrap waves-effect">
+              <input type="file" multiple>
+            </div>
+          </div>
+          <button class="btn btn-dark btn-rounded mt-5" [disabled]="!companyForm.valid" (click)="saveNewCompany()">save company</button>
+        </form>
+      </div>
+    </div>
+  </div>

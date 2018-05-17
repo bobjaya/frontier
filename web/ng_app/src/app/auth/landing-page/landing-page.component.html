@@ -1,0 +1,63 @@
+<section class="main-content text-center pb-5">
+    <div class="container">
+
+      <div class="row justify-content-center">
+        <div class="col-lg-8 col-xl-7 px-xl-4">
+          <div *ngIf="!returnedUser">
+            <p class="poppins fz-38 weight-500">Welcome {{userData.user.first_name}}! {{userData.landing_page.title}}</p>
+            <p class="fz-19 mb-2" *ngFor="let message of userData.landing_page.messages">{{message}}</p>
+          </div>
+          <div *ngIf="returnedUser">
+            <p class="poppins fz-38 weight-500">Welcome back, {{userData.user.first_name}}!</p>
+            <p class="fz-19 mb-2">Click below when you are ready to continue creating your Signal Profile. You can get started from where your left off.</p>
+          </div>
+          <p class="fz-15 italic">Don’t worry – if you don’t finish it all in one go you can save your place and come back later</p>
+
+          <div class="form-row justify-content-center pt-5 pb-3 text-left">
+            <div class="col-md progress-wrap" *ngIf="userData.user.type == 'hiring_manager'">
+              <div class="progress">
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" style="min-width: 0%" [style.width]="(100/totalQuestions)*progress + '%'" [attr.aria-valuenow]="progress" aria-valuemin="0" [attr.aria-valuemax]="totalQuestions">
+                    <span class="segment">Segment <div>1</div></span>
+                    <span class="quantity"></span>
+                  </div>
+                </div>
+                <span class="segment">Segment <div>1</div></span>
+                <span class="quantity">{{ progress }}/{{ totalQuestions }}</span>
+              </div>
+            </div>
+            <div class="col-md progress-wrap" *ngIf="userData.user.type == 'regular'">
+              <div class="progress">
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">
+                    <span class="segment">Segment <div>2</div></span>
+                    <span class="quantity"></span>
+                  </div>
+                </div>
+                <span class="segment">Segment <div>2</div></span>
+                <span class="quantity">9/35</span>
+              </div>
+            </div>
+            <div class="col-md progress-wrap" *ngIf="userData.user.type == 'regular'">
+              <div class="progress">
+                <div class="progress-bar-wrap">
+                  <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                    <span class="segment">Segment <div>3</div></span>
+                    <span class="quantity"></span>
+                  </div>
+                </div>
+                <span class="segment">Segment <div>3</div></span>
+                <span class="quantity">31 questions</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="pt-3">
+            <button class="btn btn-dark btn-rounded mt-3" [routerLink]="['/question/view']">{{returnedUser? 'continue' : 'get started'}}</button>
+          </div>
+
+        </div>
+      </div>
+      
+    </div>
+  </section>

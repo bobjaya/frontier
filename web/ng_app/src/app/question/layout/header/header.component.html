@@ -1,0 +1,49 @@
+<header class="main-header">
+  <div class="container-fluid">
+
+    <div class="row align-items-center">
+      <div class="col col-sm-auto col-md-3 col-xl order-sm-1"><a href="#!" class="logo"><img src="assets/img/logo-short.svg" alt=""></a></div>
+      <div class="col col-sm-auto col-md-3 col-xl text-right order-sm-3"><a (click)="saveAndExit()" class="poppins fz-13 color-inherit">save and exit</a></div>
+      <div class="col-sm order-sm-2">
+
+        <div class="form-row text-left pt-3">
+          <div class="col-sm progress-wrap complete" style="min-width: 210px !important;" *ngIf="data.user.user.type === 'hiring_manager'">
+            <div class="progress">
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" style="width: 0%" [attr.aria-valuenow]="progress" aria-valuemin="0" [attr.aria-valuemax]="totalQuestions" [style.width]="(100/totalQuestions)*progress + '%'">
+                  <span class="segment">Segment <div>1</div></span>
+                  <!-- <span class="quantity"></span> -->
+                </div>
+              </div>
+              <span class="segment">Segment <div>1</div></span>
+              <span class="quantity">{{ progress }}/{{ totalQuestions }}</span>
+            </div>
+          </div>
+          <div class="col-sm progress-wrap" *ngIf="data.user.user.type === 'regular'">
+            <div class="progress">
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" style="width: 3%" aria-valuenow="3" aria-valuemin="0" aria-valuemax="100">
+                  <!-- <span class="quantity"></span> -->
+                </div>
+              </div>
+              <span class="segment">Segment <div>2</div></span>
+              <span class="quantity">1/35</span>
+            </div>
+          </div>
+          <div class="col-sm progress-wrap" *ngIf="data.user.user.type === 'regular'">
+            <div class="progress">
+              <div class="progress-bar-wrap">
+                <div class="progress-bar" role="progressbar" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+                  <!-- <span class="quantity"></span> -->
+                </div>
+              </div>
+              <span class="segment">Segment <div>3</div></span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</header>

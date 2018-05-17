@@ -1,0 +1,34 @@
+FROM phusion/baseimage
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y build-essential postgresql python-pip
+
+# Install Node.js
+RUN curl -sL https://deb.nodesource.com/setup_9.x | bash
+RUN apt-get install -y nodejs
+
+# Install Python dependencies
+COPY requirements.txt /tmp
+RUN pip install -r /tmp/requirements.txt
+
+# Install Node dependencies
+RUN mkdir /frontier_ng
+COPY web/ng_app/package* /frontier_ng/
+RUN (cd /frontier_ng && npm install)
+
+# Copy code
+COPY ./ /frontier
+RUN cp -r /frontier/web/ng_app/. /frontier_ng
+
+# Build Angular app
+RUN (cd /frontier_ng && make build)
+RUN ln -s /frontier_ng/dist /frontier/web/static/web
+
+# Set working dir
+WORKDIR /frontier
+
+# Collect static files
+RUN python manage.py collectstatic --noinput --settings=frontier.settings.dev
+
+ENV PYTHONUNBUFFERED 1
+CMD gunicorn --bind 0.0.0.0:$PORT --preload --log-file - frontier.wsgi

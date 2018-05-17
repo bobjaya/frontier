@@ -1,0 +1,59 @@
+<section class="main-content pt-5 pb-3">
+  <div class="container">
+    <img src="assets/img/admin/logo-1.png" alt="">
+    <div class="tables-wrapper mt-4">
+
+      <nav class="navbar navbar-expand-sm navbar-dark justify-content-center top-navigation uppercase mb-5">
+        <ul class="navbar-nav mr-sm-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">
+              <span class="circle"><img src="assets/img/admin/i-1.png" alt=""></span>
+              <span>Hiring Managers</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              <span class="circle"><img src="assets/img/admin/i-2.png" alt=""></span>
+              <span>Open Jobs</span>
+            </a>
+          </li>
+        </ul>
+        <ul class="navbar-nav">
+          <li class="nav-item"><a class="nav-link" href="#!" routerLink="/admin/new-hiring-manager"><img src="assets/img/plus.svg" alt="" class="mr-2"> <span>New hiring manager</span></a></li>
+        </ul>
+      </nav>
+
+      <div class="table-responsive text-center px-3 pb-5">
+        <table class="table table-fixed table-striped table-admin">
+          <thead class="bg-gray-light">
+            <tr class="text-white">
+              <th>Hiring Mangager ID</th>
+              <th>Company Name</th>
+              <th>HM Name</th>
+              <th>Email</th>
+              <th>Address</th>
+              <th>Phone #</th>
+              <th>Open Jobs</th>
+              <th>Status</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="managers-row" *ngFor="let manager of managers" [routerLink]="'../../jobs/' + manager.name">
+              <td>{{manager.id}}</td>
+              <td>{{manager.company}}</td>
+              <td>{{manager.name}}</td>
+              <td>{{manager.email}}</td>
+              <td>{{manager.address1}}</td>
+              <td>{{manager.phone}}</td>
+              <td>{{manager.open_jobs}}</td>
+              <td>{{manager.status}}</td>
+              <td><img [src]="manager.logo" alt="" width="30"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </div>
+</section>
